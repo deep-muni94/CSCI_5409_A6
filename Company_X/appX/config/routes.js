@@ -20,8 +20,15 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
-
-
+  'GET /jobs17/': 'JobsController.getAll17',
+  'GET /adddata17': {view:'adddata'},
+  'GET /getone17/': 'JobsController.getOne17',
+  'POST /job17/': 'JobsController.create17',
+  'PUT /job17/': 'JobsController.update17',
+  'POST /deletejob17/': 'JobsController.delete17',
+  'POST /updatejob17/': 'JobsController.updatejob17',
+  'POST /jobupdate17': 'JobsController.update17',
+  'GET /finddata17': {view:'finddata'},
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
