@@ -6,7 +6,7 @@ module.exports.routes = {
   'POST /delete': 'JobsController.delete17',
   'POST /addJob': 'JobsController.create17',
   'POST /updateJob': 'JobsController.update17',
-  'GET /requestDataQty': 'JobsController.GetRequiredQuentityDetail17',
+  'GET /requestDataQty': 'JobsController.getRequiredQtyDetail17',
   'GET /requestAllJobs': 'JobsController.findAllJobs17',
   'GET /requestDataPartsQty': 'JobsController.findPartsQty17'
 };
