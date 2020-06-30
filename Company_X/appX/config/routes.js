@@ -8,5 +8,8 @@ module.exports.routes = {
   'POST /updateJob': 'JobsController.update17',
   'GET /requestDataQty': 'JobsController.getRequiredQtyDetail17',
   'GET /requestAllJobs': 'JobsController.findAllJobs17',
-  'GET /requestDataPartsQty': 'JobsController.findPartsQty17'
+  'GET /requestDataPartsQty': 'JobsController.findPartsQty17',
+
+  'POST /postOrder': 'OrdersController.postOrder17',
+  'GET /searchOrder': 'OrdersController.searchOrder17',
 };
