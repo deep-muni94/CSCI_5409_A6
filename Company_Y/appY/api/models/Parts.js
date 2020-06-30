@@ -22,9 +22,9 @@ module.exports = {
       type: 'number',
       required: true,
       allowNull: false,
-    },
+    }
   },
-  datastore: 'default',
-  tableName: 'parts',
+  datastore: 'mysqldb',
+  tableName: 'parts'
 };
 
