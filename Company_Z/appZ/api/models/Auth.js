@@ -7,9 +7,8 @@
 
 module.exports = {
 
-  attributes: {
-
     attributes: {
+        
     id: { 
         type: 'number',  
         required : true
@@ -23,8 +22,6 @@ module.exports = {
     password:{
         type: "string"
     }
-
-  },
-
+  }
 };
 
