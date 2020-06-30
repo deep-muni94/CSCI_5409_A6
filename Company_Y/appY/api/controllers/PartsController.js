@@ -94,5 +94,29 @@ module.exports = {
             }
         });
     },
+    updatePartPage17:function(req,res){
+        // console.log("Update jobs called "+req.params.jobId+" "+req.params.partId)
+        Parts.findOne({id:req.params.partId, partName:req.params.partName}).exec(function(err,parts17){
+            console.log("Update jobs called: "+parts17)
+            if(err){
+                res.send(500, {data: err});
+            }
+            else{
+                res.view('pages/updatepart', {parts17:parts17});
+            }
+        });
+    },
+    updateQuantity17:function(req,res){
+        // console.log("Update quantity called "+req.params.jobId+" "+req.params.partId)
+        Parts.update({id:req.params.partId, partName:req.params.partName},{qoh:req.body.qty}).exec(function(err,parts17){
+            console.log("Update quantity called: "+parts17)
+            if(err){
+                res.send(500, {data: err});
+            }
+            else{
+                res.redirect('/parts17');
+            }
+        });
+    }
 };
 

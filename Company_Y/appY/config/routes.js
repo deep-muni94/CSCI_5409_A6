@@ -30,6 +30,8 @@ module.exports.routes = {
     view: 'pages/addpart'
   },
   'POST /addpart17': 'PartsController.addPart17',
+  'POST /updatepart17/:partId/:partName': 'PartsController.updatePartPage17',
+  'POST /updatequantity17/:partId/:partName': 'PartsController.updateQuantity17'
 
   /***************************************************************************
   *                                                                          *
