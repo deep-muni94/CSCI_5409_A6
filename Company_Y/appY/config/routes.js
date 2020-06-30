@@ -19,7 +19,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  'GET /': 'PartsController.redirect17',
   'GET /getallparts17': 'PartsController.getAllParts17',
   'GET /getpartbyid17/:id': 'PartsController.getPartById17',
   'GET /getqtybyid17/:id': 'PartsController.getQtyById17',
