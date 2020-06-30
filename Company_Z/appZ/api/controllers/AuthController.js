@@ -44,7 +44,26 @@ module.exports = {
    		else{
    			res.send("false")
    		}
-   	}
+   	},
+
+   	fetchjobs:async function(req, res) {
+
+		const request = require('request');
+		request('http://localhost:1337/requestAllJobs', function (error, response, body) {
+			res.send(body); 
+   	});
+   },
+
+   fetchqty:async function(req, res) {
+
+		const request = require('request');
+		request('http://localhost:1337/requestAllJobs', function (error, response, body) {
+			res.send(body); 
+   	});
+   },
+
+
+
 
 };
 
