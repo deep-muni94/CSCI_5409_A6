@@ -1,0 +1,26 @@
+<div class="home">
+    <a href="/"></a>
+</div>
+<%if (result.length == 0) { %>
+    <div class="hint">NO JOBS FOUND FOR GIVEN INPUT</div>
+    <div class="submit adjust_2">
+        <span>Search Another Job</span>
+        <a href="/"></a>
+    </div>
+<% } %>
+<%if (result.length > 0) { %>
+<table>
+    <tr>
+        <th>Job Name</th>
+        <th>Part ID</th>
+        <th>Quantity</th>
+    </tr>
+    <% result.forEach(function (res) { %>
+        <tr>
+            <td><%= res.jobName %></td>
+            <td><%= res.id %></td>
+            <td><%= res.qty %></td>
+        </tr>
+    <% }) %>
+</table>
+<% } %>

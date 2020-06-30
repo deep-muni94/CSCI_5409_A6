@@ -53,7 +53,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  // migrate: 'alter',
+   migrate: 'safe',
 
 
   /***************************************************************************
@@ -69,15 +69,12 @@ module.exports.models = {
   ***************************************************************************/
 
   attributes: {
-    createdAt: { type: 'number', autoCreatedAt: true, },
-    updatedAt: { type: 'number', autoUpdatedAt: true, },
-    id: { type: 'number', autoIncrement: true, },
     //--------------------------------------------------------------------------
     //  /\   Using MongoDB?
     //  ||   Replace `id` above with this instead:
     //
     // ```
-    // id: { type: 'string', columnName: '_id' },
+    // id: { type: 'string', columnName: 'partId' },
     // ```
     //
     // Plus, don't forget to configure MongoDB as your default datastore:
@@ -101,7 +98,7 @@ module.exports.models = {
   ******************************************************************************/
 
   dataEncryptionKeys: {
-    default: 'ytqdt4FKV55vI0Va52/JVoegU6sWefJzg+JXvuwMmTE='
+    default: 'z+1u2nAUPk+kDSiRvUdfrbQwd83bhr3I6DIrxBJPPmc='
   },
 
 
