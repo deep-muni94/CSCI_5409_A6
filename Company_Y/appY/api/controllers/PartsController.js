@@ -34,5 +34,16 @@ module.exports = {
           }
         });
     },
+    //functions for the front end
+    displayAllParts17:function(req, res){
+        Parts.find({}).exec(function(err,parts17){
+            if(err){
+                res.send(500, {data: error});
+            }
+            else{
+                res.view('pages/parts', {parts17:parts17});
+            }
+        })
+    },
 };
 

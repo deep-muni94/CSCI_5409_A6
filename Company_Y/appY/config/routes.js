@@ -23,6 +23,8 @@ module.exports.routes = {
   'GET /getallparts17': 'PartsController.getAllParts17',
   'GET /getpartbyid17/:id': 'PartsController.getPartById17',
   'GET /getqtybyid17/:id': 'PartsController.getQtyById17',
+  'GET /parts17': 'PartsController.displayAllParts17',
+
 
   /***************************************************************************
   *                                                                          *
