@@ -20,6 +20,13 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
+  'GET /getallparts17': 'PartsController.getAllParts17',
+  'GET /getpartbyid17/:id': 'PartsController.getPartById17',
+  'GET /getqtybyid17/:id': 'PartsController.getQtyById17',
+  'GET /parts17': 'PartsController.displayAllParts17',
+  'GET /findpart17': 'PartsController.displayPartByIdPage17',
+  'POST /findpart17': 'PartsController.displayPartById17',
+  // 'GET /addpart17': '',
 
 
   /***************************************************************************
