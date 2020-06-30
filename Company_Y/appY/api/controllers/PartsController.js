@@ -45,5 +45,29 @@ module.exports = {
             }
         })
     },
+    displayPartByIdPage17:function(req, res){
+        Parts.find({id:null}).exec(function(err,parts17){
+            console.log("search called")
+            if(err){
+                res.send(500, {data: error});
+            }
+            else{
+                res.view('pages/findpart', {parts17:parts17});
+                console.log(parts17)
+            }
+        })
+    },
+    displayPartById17:function(req, res){
+        Parts.find({id:req.body.id}).exec(function(err,parts17){
+            console.log("search called")
+            if(err){
+                res.send(500, {data: error});
+            }
+            else{
+                res.view('pages/findpart', {parts17:parts17});
+                console.log(parts17)
+            }
+        })
+    },
 };
 
