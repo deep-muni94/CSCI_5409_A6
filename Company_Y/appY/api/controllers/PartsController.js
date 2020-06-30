@@ -69,5 +69,30 @@ module.exports = {
             }
         })
     },
+    addPart17:function(req,res){
+        partId17 = req.body.partId;
+        partName17 = req.body.partName;
+        qty17 = req.body.qty;
+        Parts.find({id:partId17}).exec(function(err,parts17){
+            console.log("Finding if part exists")
+            if (parts17.length>0){
+                console.log("Same part already exists. Exiting...")
+                errorMessage17 = "A record with part id "+partId17+" already exists.";
+                res.view('pages/error', {errorMessage17:errorMessage17});
+            }
+            else{
+                // res.send("job doesnt exist")
+                Parts.create({id:partId17, partName:partName17, qoh:qty17}).exec(function(err,parts17){
+                    console.log("Add parts called")
+                    if(err){
+                        res.send(500, {data: err});
+                    }
+                    else{
+                        res.redirect('/parts17');
+                    }
+                });
+            }
+        });
+    },
 };
 

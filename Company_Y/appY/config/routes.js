@@ -26,8 +26,10 @@ module.exports.routes = {
   'GET /parts17': 'PartsController.displayAllParts17',
   'GET /findpart17': 'PartsController.displayPartByIdPage17',
   'POST /findpart17': 'PartsController.displayPartById17',
-  // 'GET /addpart17': '',
-
+  'GET /addpart17':  {
+    view: 'pages/addpart'
+  },
+  'POST /addpart17': 'PartsController.addPart17',
 
   /***************************************************************************
   *                                                                          *
