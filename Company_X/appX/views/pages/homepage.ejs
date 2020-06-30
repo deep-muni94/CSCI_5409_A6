@@ -1,0 +1,64 @@
+<div class="wrapper">
+    <div class="box" style="margin-bottom: 40px">
+        <br><br>
+        <button class="submit">
+            <span>See All Jobs</span>
+            <a href="/allJobs"></a>
+        </button>
+        <br><br>
+        <button class="submit">
+            <span>Delete Jobs</span>
+            <a href="/deleteJob"></a>
+        </button>
+    </div>
+
+    <div class="box" style="margin-bottom: 40px">
+        <form action="/oneJob" onsubmit="return valid_1()">
+            <div class="input-section">
+                <label for="job_1">Job Name</label>
+                <input type="text" placeholder="Enter JobName" class="inp" id="job_1" name="jobName"/>
+            </div>
+            <div class="input-section">
+                <label for="id_1">Part ID</label>
+                <input type="number" placeholder="Enter Part ID" class="inp" id="id_1" name="id"/>
+            </div>
+            <input type="submit" class="submit" value="Search"/>
+        </form>
+    </div>
+
+    <div class="box">
+        <form action="/addJob" onsubmit="return valid_2()" method="post">
+            <div class="input-section">
+                <label for="job_2">Job Name</label>
+                <input type="text" placeholder="Enter JobName" class="inp" id="job_2" name="jobName"/>
+            </div>
+            <div class="input-section">
+                <label for="id_2">Part ID</label>
+                <input type="number" placeholder="Enter Part ID" class="inp" id="id_2" name="id"/>
+            </div>
+            <div class="input-section">
+                <label for="qty_2">Quantity</label>
+                <input type="number" placeholder="Enter Quantity" class="inp" id="qty_2" name="qty"/>
+            </div>
+            <input type="submit" class="submit" value="Add"/>
+        </form>
+    </div>
+
+    <div class="box">
+        <form action="/updateJob" onsubmit="return valid_3()" method="post">
+            <div class="input-section">
+                <label for="job_3">Job Name</label>
+                <input type="text" placeholder="Enter JobName" class="inp" id="job_3" name="jobName"/>
+            </div>
+            <div class="input-section">
+                <label for="id_3">Part ID</label>
+                <input type="number" placeholder="Enter Part ID" class="inp" id="id_3" name="id"/>
+            </div>
+            <div class="input-section">
+                <label for="qty_3">Quantity</label>
+                <input type="number" placeholder="Enter Quantity" class="inp" id="qty_3" name="qty"/>
+            </div>
+            <input type="submit" class="submit" value="Update"/>
+        </form>
+    </div>
+</div>

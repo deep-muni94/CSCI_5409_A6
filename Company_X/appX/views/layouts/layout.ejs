@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Sails App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
+    <%/* <meta name="robots" content="noindex"> */%>
+
+
+    <!--
+        Stylesheets and Preprocessors
+        ==============================
+
+        You can always bring in CSS files manually with `<link>` tags, or asynchronously
+        using a solution like AMD (RequireJS).  Or, if you like, you can take advantage
+        of Sails' conventional asset pipeline (boilerplate Gruntfile).
+
+        By default, stylesheets from your `assets/styles` folder are included
+        here automatically (between STYLES and STYLES END). Both CSS (.css) and LESS (.less)
+        are supported. In production, your styles will be minified and concatenated into
+        a single file.
+
+        To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
+        For example, here are a few things you could do:
+
+            + Change the order of your CSS files
+            + Import stylesheets from other directories
+            + Use a different or additional preprocessor, like SASS, SCSS or Stylus
+    -->
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/style.css">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <%- body %>
+
+<script src="/dependencies/sails.io.js"></script>
+<script type="text/javascript">
+    function valid_1(){
+
+        const job_1 = document.getElementById("job_1");
+        const id_1 = document.getElementById("id_1");
+
+        if(job_1.value === "" || id_1.value === ""){
+            alert("Please fill the values for searching job");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function valid_2(){
+
+        const job_2 = document.getElementById("job_2");
+        const id_2 = document.getElementById("id_2");
+        const qty_2 = document.getElementById("qty_2");
+
+        if(job_2.value === "" || id_2.value === "" || qty_2.value === ""){
+            alert("Please fill the values to add job");
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    function valid_3(){
+
+        const job_3 = document.getElementById("job_3");
+        const id_3 = document.getElementById("id_3");
+        const qty_3 = document.getElementById("qty_3");
+
+        if(job_3.value === "" || id_3.value === "" || qty_3.value === ""){
+            alert("Please fill the values to modify job");
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
+</body>
+</html>
