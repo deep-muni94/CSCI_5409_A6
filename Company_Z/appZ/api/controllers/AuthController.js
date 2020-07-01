@@ -38,8 +38,9 @@ module.exports = {
    				]
    			});
 
+   		sails.log()
    		if (s.length > 0){
-   			res.send("success")
+   			res.json({"userid":s[0].id})
    		}
    		else{
    			res.send("false")
@@ -56,13 +57,17 @@ module.exports = {
 
    fetchqty:async function(req, res) {
 
+   		let partid = req.body.partid
+
+   		sails.log(partid)
+   		sails.log("abc"+partid)
 		const request = require('request');
-		request('http://localhost:1337/requestAllJobs', function (error, response, body) {
+		request('http://localhost:1337/getqtybyid17/' + partid, function (error, response, body) {
 			res.send(body); 
    	});
-   },
+	},
 
-
+	
 
 
 };

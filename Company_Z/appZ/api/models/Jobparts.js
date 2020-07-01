@@ -1,5 +1,5 @@
 /**
- * Auth.js
+ * Jobparts.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -12,19 +12,29 @@ module.exports = {
     id: { 
         type: 'number',  
         required : true,
-        columnName: 'id'
+        columnName: 'userid'
     },
-    name:{
+    partId:{
         type: "string"
     },
-    emailid:{
+    jobName:{
         type: "string"
     },
-    password:{
+    qty:{
+        type: "string"
+    },
+    date:{
+        type: 'ref', columnType: "datetime"
+    },
+    time:{
+        type: 'ref', columnType: "datetime"
+    },
+    result:{
         type: "string"
     } 
   },
     datastore: 'mysqldb',
-    tableName: "auth"
+    tableName: "jobparts"
 };
+
 

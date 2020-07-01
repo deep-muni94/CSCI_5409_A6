@@ -22,7 +22,11 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   "POST /signup":"AuthController.signup",
   "POST /login":"AuthController.login",
-  "GET /fetchjobs":"AuthController.fetchjobs"
+  "GET /fetchjobs":"AuthController.fetchjobs",
+  "POST /fetchqty":"AuthController.fetchqty",
+  "POST /submitdata":"JobpartsController.submitdata"
+
+
 
 
 
