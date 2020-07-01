@@ -34,14 +34,9 @@ module.exports = {
     ]).exec(function (err, order17) {
         if(err){
           console.log(err);
-        }else{
-          if(order17.length > 0){
+        }else {
           //  res.view('pages/searchResult', {result:order17});
-            res.view('\\pages\\searchResult', {result: order17});
-          //  res.send(order17)
-          }else{
-            res.send({msg: "Order does not exist"});
-          }
+          res.view('\\pages\\searchResult', {result: order17});
         }
       });
   },

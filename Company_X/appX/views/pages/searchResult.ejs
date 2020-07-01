@@ -1,6 +1,14 @@
 <div class="home">
     <a href="/"></a>
 </div>
+<%if (result.length == 0) { %>
+    <div class="hint">NO ORDER FOUND FOR GIVEN INPUT</div>
+    <div class="submit adjust_2">
+        <span>Search Another Order</span>
+        <a href="/searchOrderPage"></a>
+    </div>
+<% } %>
+<%if (result.length > 0) { %>
 <table>
     <tr>
         <th>Job Name</th>
@@ -17,3 +25,4 @@
         </tr>
     <% }) %>
 </table>
+<% } %>
