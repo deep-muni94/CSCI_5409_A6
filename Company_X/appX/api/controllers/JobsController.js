@@ -5,7 +5,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }else{
-        // res.view('pages/allJobs', {result: jobs17});
+      //   res.view('pages/allJobs', {result: jobs17});
        res.view('\\pages\\allJobs', {result: jobs17});
       }
     });

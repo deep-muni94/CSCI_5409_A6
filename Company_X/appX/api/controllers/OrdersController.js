@@ -27,13 +27,18 @@ module.exports = {
   },
 
   searchOrder17: function (req, res) {
-    Orders.find({jobName: req.query.jobName})
-      .exec(function (err, order17) {
+    Orders.find({jobName: req.query.jobName}).sort([
+      { jobName: 'ASC' },
+      { userId: 'ASC' },
+      { id: 'ASC'},
+    ]).exec(function (err, order17) {
         if(err){
           console.log(err);
         }else{
           if(order17.length > 0){
-            res.send(order17)
+          //  res.view('pages/searchResult', {result:order17});
+            res.view('\\pages\\searchResult', {result: order17});
+          //  res.send(order17)
           }else{
             res.send({msg: "Order does not exist"});
           }
