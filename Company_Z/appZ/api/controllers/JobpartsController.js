@@ -37,6 +37,11 @@ module.exports = {
 				}
 				sails.log('vish')
 				res.send("inserted..!")
+
+				request.post('http://localhost:1337/postOrder').form({partid:partid,jobname:req.body.jobname,
+				 userid:req.body.userid, qty: qty
+				 })
+
 			})
 		}
 		else{
