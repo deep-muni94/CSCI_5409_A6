@@ -55,7 +55,7 @@ module.exports = {
    	});
    },
 
-   fetchqty:async function(req, res) {
+   	fetchqty:async function(req, res) {
 
    		let partid = req.body.partid
 
