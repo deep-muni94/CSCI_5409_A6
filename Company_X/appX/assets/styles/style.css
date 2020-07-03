@@ -2,7 +2,7 @@
 
 body{
   font-family: "Lucida Console", monospace;
-  padding-bottom: 50px;
+  padding: 5px 20px 50px;
 }
 
 .home{
@@ -163,4 +163,18 @@ label{
 
 button{
   position: relative;
+}
+
+.adjust_4{
+  margin: 50px auto 0;
+}
+
+.adjust_5 {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 1150px) {
+  .adjust_5 {
+    margin-bottom: 40px;
+  }
 }
