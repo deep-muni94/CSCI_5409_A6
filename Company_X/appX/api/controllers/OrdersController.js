@@ -1,3 +1,5 @@
+
+
 module.exports = {
 
   postOrder17: function (req, res) {
@@ -45,5 +47,14 @@ module.exports = {
         }
       });
   },
+  getAllOrders17: function (req, res) {
+    Orders.find({}).exec(function (err, order17) {
+        if(err){
+          console.log(err);
+        }else{
+          res.view('pages/allOrders', {result: order17});
+        }
+      });
+  }
 };
 

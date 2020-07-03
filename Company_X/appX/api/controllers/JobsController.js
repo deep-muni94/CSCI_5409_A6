@@ -1,3 +1,5 @@
+const request = require('request');
+
 module.exports = {
 
   getAll17: function (req, res) {
@@ -6,7 +8,7 @@ module.exports = {
         console.log(err);
       }else{
       //   res.view('pages/allJobs', {result: jobs17});
-       res.view('\\pages\\allJobs', {result: jobs17});
+       res.view('pages/allJobs', {result: jobs17});
       }
     });
   },
@@ -23,21 +25,30 @@ module.exports = {
   },
 
   create17: function (req, res) {
-    Jobs.find({jobName: req.body.jobName, id: req.body.id}).exec(function (err, job17) {
-      if(job17.length === 0){
-        Jobs.create({
-          jobName: req.body.jobName,
-          id: req.body.id,
-          qty: req.body.qty
-        }).exec(function (err, result) {
-          // res.view("pages/addJob", {result: {msg: "Job Added", btnMsg: "Add another Job"}});
-         res.view("\\pages\\addJob", {result: {msg: "Job Added", btnMsg: "Add another Job"}});
-        });
-      }else{
-        // res.view("pages/addJob", {result: {msg: "Job already exist", btnMsg: "Try Again"}});
-       res.view("\\pages\\addJob", {result: {msg: "Job already exist", btnMsg: "Try Again"}});
-      }
-    });
+    request('http://localhost:1337/getpartbyid17/'+req.body.id, { json: true }, (err, response, body) => {
+          if (err) { return console.log(err); }
+          if(response.body.length>0){
+            Jobs.find({jobName: req.body.jobName, id: req.body.id}).exec(function (err, job17) {
+              if(job17.length === 0){
+                Jobs.create({
+                  jobName: req.body.jobName,
+                  id: req.body.id,
+                  qty: req.body.qty
+                }).exec(function (err, result) {
+                  // res.view("pages/addJob", {result: {msg: "Job Added", btnMsg: "Add another Job"}});
+                 res.view("\\pages\\addJob", {result: {msg: "Job Added", btnMsg: "Add another Job"}});
+                });
+              }else{
+                // res.view("pages/addJob", {result: {msg: "Job already exist", btnMsg: "Try Again"}});
+               res.view("\\pages\\addJob", {result: {msg: "Job already exist", btnMsg: "Try Again"}});
+              }
+            });
+          }
+          else{
+            res.view("\\pages\\addJob", {result: {msg: "Part does not exist", btnMsg: "Try Again"}});
+          //  res.view("pages/addJob", {result: {msg: "Part does not exist", btnMsg: "Try Again"}});
+          }
+        });  
   },
 
   update17: function (req, res) {
