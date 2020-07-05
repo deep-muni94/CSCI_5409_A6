@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title of the document</title>
+</head>
+
+<body>
+<h1>Order your parts</h1>
+
+		<label for="jobs">Choose a job:</label> <form name="myform"
+		action="/fetchparts" onsubmit="return myFunction()" method="GET">
+
+			<br>
+			<select name="jobs" id="jobs" style="margin-left:1%;"></select>
+
+			<br>
+			<br> 
+			<input type="submit" value="Submit">
+		</form>
+	<script>	
+
+		const fetchjobs = "http://localhost:1337/fetchjobs"
+
+		var data;
+
+		async function getjobs(){
+			const response = await fetch(fetchjobs);
+			data = await response.json()
+
+			console.log(data)
+				
+			var select = document.getElementById("jobs"); 
+			data.forEach(async function (arrayItem) {
+			    let jobname = arrayItem.jobName
+			    
+			    var el = document.createElement("option");
+			    el.text = jobname;
+			    el.value = jobname;
+
+			    select.add(el);
+
+   			});
+		}
+
+		getjobs()
+
+		function myFunction(){
+			var x = document.getElementById("jobs");
+			localStorage.setItem("jobnamekey", x.value)
+
+		}
+	</script>
+
+</body>
+
+</html>

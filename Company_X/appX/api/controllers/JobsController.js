@@ -81,7 +81,7 @@ module.exports = {
       if(err){
         console.log(err);
       }else{
-        res.send(jobs17);
+        res.json(jobs17);
       }
     });
   },
@@ -91,17 +91,18 @@ module.exports = {
       if (err) {
         console.log(err);
       }else{
-        res.send(jobs17);
+        res.json(jobs17);
       }
     });
   },
 
   findPartsQty17: function (req, res) {
-    Jobs.find({jobName: req.query.jobName}).exec(function (err, jobs17) {
+    sails.log(req.params.id,"---------")
+    Jobs.find({jobName: req.params.id}).exec(function (err, jobs17) {
       if(err){
         console.log(err);
       }else{
-        res.send(jobs17);
+        res.json(jobs17);
       }
     });
   }

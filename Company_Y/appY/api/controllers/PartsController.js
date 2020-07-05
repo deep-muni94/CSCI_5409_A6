@@ -20,7 +20,7 @@ module.exports = {
           if (err) {
             res.send({data:err})
         }else{
-            res.send(parts17);
+            res.json(parts17);
           }
         });
     },
