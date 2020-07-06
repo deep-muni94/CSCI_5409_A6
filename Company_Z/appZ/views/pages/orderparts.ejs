@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	table, th, td{
+	padding: 10px;
+	border: 2px solid black; 
+	border-collapse: collapse;
+	}
+</style>
+
+<title>Title of the document <%= parts %></title>
+</head>
+
+<body>
+<h1>parts information for jobs</h1>
+	
+	<table>
+	<thread>
+	<tr>
+	<th> Part ID </th>
+	<th> part Name </th>
+	<th> Quantity </th>
+	</tr>
+	</thread>
+	<tbody>
+		<% parts.forEach(function(part){ %>
+		<tr>
+		<td> <%= part.id %> </td>
+		<td> <%= part.partName %> </td>
+		<td> <%= part.qoh %> </td>
+		</tr>
+		<% }) %>
+	</tbody>
+	</table>
+	<br>
+	<form action="/login">
+		<input type="submit" value="Buy all parts">
+	</form>
+
+
+	<script>	
+
+
+	</script>
+
+</body>
+
+</html>
