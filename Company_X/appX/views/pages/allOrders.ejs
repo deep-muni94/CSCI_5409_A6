@@ -1,0 +1,19 @@
+<div class="home">
+    <a href="/"></a>
+</div>
+<table>
+    <tr>
+        <th>Job Name</th>
+        <th>Part ID</th>
+        <th>User ID</th>
+        <th>Quantity</th>
+    </tr>
+    <% result.forEach(function (res) { %>
+        <tr>
+            <td><%= res.jobName %></td>
+            <td><%= res.id %></td>
+            <td><%= res.userId %></td>
+            <td><%= res.qty %></td>
+        </tr>
+    <% }) %>
+</table>
