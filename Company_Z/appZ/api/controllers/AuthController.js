@@ -33,8 +33,6 @@ module.exports = {
    		let password = req.query.psw
    		let jobname = req.query.hidTest;
 
-   		sails.log(jobname,"-----jobname")
-
    		var s = await Auth.find().where({
    				and:
    					[
@@ -44,23 +42,17 @@ module.exports = {
    			});
 
    		userid = s[0].id
-   		sails.log(userid,"---userid")
 
    		let jobs;
 		const request2 = require('request-promise');
 		await request2('http://localhost:1337/fetchparts_api?jobs=' + jobname, 
 			function (error, response, body) {
 			jobs = JSON.parse(body);
-			// sails.log(body,"------------")
-
 		})
-
-		sails.log(jobs,"------------jobs")
 
 		jobs.forEach(async function(job) {
 			
 			const request = require('request-promise');
-			sails.log(job.id,"-----id")
 			await request('http://localhost:1339/getqtybyid17/' + job.id, 
 				function (error, response, body) {
 
@@ -78,8 +70,6 @@ module.exports = {
    					{jobName: jobname}
    				]
    			});
-
-		sails.log(s1.length,"-------len")
 
 		if(s1.length < 1){
 			jobs.forEach(async function(job) {
@@ -107,29 +97,48 @@ module.exports = {
 		else{
 			res.send("can not order more part for same job")
 		}
-
-
-
-   		
    	},
 
    	fetchjobs:async function(req, res) {
 
 		const request = require('request');
 		request('http://localhost:1338/requestAllJobs', function (error, response, body) {
-			// sails.log(body)
 			res.send(body); 
    	});
    },
 
    	fetchparts: async function(req, res) {
 
-   		let jobname = req.query.jobs
+   		let jobname = req.query.searchjob
+
+   		if (!join(separator: string)bname){
+   			jobname = req.query.jobs
+   		}
+
    		let joblist;
    		const request1 = require('request-promise');
    		
    		await request1('http://localhost:1338/requestDataPartsQty/'+ jobname, function(err,httpResponse,body){
-   			joblist = body 
+
+   			if (JSON.parse(body).length > 0){
+   				joblist = body
+
+   				var today = new Date();
+				const DATE_FORMATER = require( 'dateformat' );
+				var time = DATE_FORMATER( today, "HH:MM:ss" );
+   				
+   				Search.create({id: jobname, date:today , time: time, result:"sucess"}).exec(function(err){
+					
+					if(err){
+						sails.log(err)
+						res.json(err)
+					}
+					sails.log("inserted search..!")
+				})
+			}
+			else{
+				res.send("can not find parts inforamtion for job : " + searchjob)
+			}
    		 })
 
 		joblist = JSON.parse(joblist);
@@ -150,7 +159,6 @@ module.exports = {
 
 				if (i == l){
 					res.view("\\pages\\orderparts",{parts:data})
-					// res.json(data)
 				}
 			});	
    		});
@@ -183,7 +191,6 @@ module.exports = {
 				i=i+1
 
 				if (i == l){
-					// res.view("\\pages\\orderparts",{parts:data})
 					res.json(data)
 				}
 			});	
