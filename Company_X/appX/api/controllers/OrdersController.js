@@ -1,5 +1,3 @@
-
-
 module.exports = {
 
   postOrder17: function (req, res) {
@@ -37,11 +35,11 @@ module.exports = {
         if(err){
           console.log(err);
         }else {
-          //  res.view('pages/searchResult', {result:order17});
-          res.view('\\pages\\searchResult', {result: order17});
+          res.view('pages/searchResult', {result: order17});
         }
       });
   },
+
   getAllOrders17: function (req, res) {
     Orders.find({}).exec(function (err, order17) {
         if(err){

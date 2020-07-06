@@ -73,6 +73,13 @@ table th {
   box-shadow: 0 0 5px 5px #0073b1;
 }
 
+.flex-box{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+
 .input-section{
   position: relative;
   padding: 7px 0;
@@ -120,6 +127,11 @@ label{
   color: #ffffff;
   border: 1px solid #0073b1;
   font-family: "Lucida Console", monospace;
+}
+
+.flex-submit{
+  width: 45%;
+  margin-top: 0;
 }
 
 .submit:active{
@@ -174,6 +186,29 @@ button{
 }
 
 @media only screen and (max-width: 1150px) {
+
+  .wrapper{
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .box{
+    width: 80%;
+  }
+
+  .flex-box{
+    padding-top: 20px;
+  }
+
+  .flex-submit{
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .flex-submit:last-child{
+    margin-bottom: 0;
+  }
+
   .adjust_5 {
     margin-bottom: 40px;
   }
