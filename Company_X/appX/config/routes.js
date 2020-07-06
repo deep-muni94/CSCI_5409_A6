@@ -9,4 +9,9 @@ module.exports.routes = {
   'GET /requestDataQty': 'JobsController.getRequiredQtyDetail17',
   'GET /requestAllJobs': 'JobsController.findAllJobs17',
   'GET /requestDataPartsQty/:id': 'JobsController.findPartsQty17'
+  'GET /requestDataPartsQty': 'JobsController.findPartsQty17',
+  'GET /allOrders': 'OrdersController.getAllOrders17',
+  'POST /postOrder': 'OrdersController.postOrder17',
+  'GET /searchOrderPage': { view: 'pages/searchOrderPage'},
+  'GET /searchOrder': 'OrdersController.searchOrder17',
 };
