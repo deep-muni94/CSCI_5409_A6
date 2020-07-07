@@ -5,8 +5,6 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-var JobpartsController = require('./JobpartsController');
-
 module.exports = {
   
 	signup:async function(req, res) {
@@ -111,7 +109,7 @@ module.exports = {
 
    		let jobname = req.query.searchjob
 
-   		if (!join(separator: string)bname){
+   		if (!jobname){
    			jobname = req.query.jobs
    		}
 
