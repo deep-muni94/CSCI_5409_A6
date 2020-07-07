@@ -36,8 +36,8 @@ module.exports.routes = {
   'GET /searchOrderPage': { view: 'pages/searchOrderPage'},
   // 'GET /searchOrder17': 'OrderController.searchJob17',
   'POST /searchOrder': 'OrderController.searchOrder17',
-  'GET /displayorder':'OrderController.displayAllOrder17'
-
+  'GET /displayorder':'OrderController.displayAllOrder17',
+  'GET /partExist17/:id' : 'PartsController.partExist17s'
 
   /***************************************************************************
   *                                                                          *
