@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-  
+
 	signup:async function(req, res) {
 
 		let name = req.body.name
@@ -22,7 +22,7 @@ module.exports = {
 			sails.log('vish')
 			res.redirect("/homepage")
 		})
-			
+
 	},
 
 	login:async function(req, res) {
@@ -43,15 +43,15 @@ module.exports = {
 
    		let jobs;
 		const request2 = require('request-promise');
-		await request2('http://localhost:1337/fetchparts_api?jobs=' + jobname, 
+		await request2('http://localhost:1339/fetchparts_api?jobs=' + jobname,
 			function (error, response, body) {
 			jobs = JSON.parse(body);
 		})
 
 		jobs.forEach(async function(job) {
-			
+
 			const request = require('request-promise');
-			await request('http://localhost:1339/getqtybyid17/' + job.id, 
+			await request('http://localhost:1338/getqtybyid17/' + job.id,
 				function (error, response, body) {
 
 				if (parseInt(job.qoh) > parseInt(body)){
@@ -75,20 +75,38 @@ module.exports = {
 				const DATE_FORMATER = require( 'dateformat' );
 				var time = DATE_FORMATER( today, "HH:MM:ss" );
 
-				Jobparts.create({id: userid, partId: job.id , jobName: jobname, 
+				Jobparts.create({id: userid, partId: job.id , jobName: jobname,
 					qty: job.qoh, date:today , time: time, result:"sucess"}).exec(function(err){
-					
+
 					if(err){
 						sails.log(err)
 						res.json(err)
 					}
 					sails.log('vish')
+
+          request('http://localhost:1338/partExist17/' + req.body.id, { json: true }, (err, response, body) => {
+
+          });
+
+          request.post('http://localhost:1337/postOrder',
+            {
+              id:partid,
+              jobName:req.body.jobname,
+              userId:req.body.userid,
+              qty: qty
+            }
+          )
+
+          request.post('http://localhost:1338/insertOrder17',
+            {
+              id:partid,
+              jobName:req.body.jobname,
+              userId:req.body.userid,
+              qty: qty
+            }
+          )
+
 					res.send("inserted..!")
-
-					request.post('http://localhost:1337/postOrder').form({partid:[partid],jobname:req.body.jobname,
-					 userid:req.body.userid, qty: [qty]
-					 })
-
 				})
 			})
 		}
@@ -100,8 +118,8 @@ module.exports = {
    	fetchjobs:async function(req, res) {
 
 		const request = require('request');
-		request('http://localhost:1338/requestAllJobs', function (error, response, body) {
-			res.send(body); 
+		request('http://localhost:1337/requestAllJobs', function (error, response, body) {
+			res.send(body);
    	});
    },
 
@@ -113,12 +131,10 @@ module.exports = {
    			jobname = req.query.jobs
    		}
 
-   		sails.log(jobname,"--jobname")
-
    		let joblist;
    		const request1 = require('request-promise');
-   		
-   		await request1('http://localhost:1338/requestDataPartsQty/'+ jobname, function(err,httpResponse,body){
+
+   		await request1('http://localhost:1337/requestDataPartsQty/'+ jobname, function(err,httpResponse,body){
 
    			if (JSON.parse(body).length > 0){
    				joblist = body
@@ -126,21 +142,19 @@ module.exports = {
    				var today = new Date();
 				const DATE_FORMATER = require( 'dateformat' );
 				var time = DATE_FORMATER( today, "HH:MM:ss" );
-   				
+
    				Search.create({id: jobname, date:today , time: time, result:"sucess"}).exec(function(err){
-					
+
 					if(err){
 						sails.log(err)
 						res.json(err)
 					}
-					sails.log("inserted search..!")
 				})
 			}
 			else{
 				res.send("can not find parts inforamtion for job : " + searchjob)
 			}
    		 })
-   		sails.log(joblist,"joblist")
 
 		joblist = JSON.parse(joblist);
 
@@ -150,18 +164,23 @@ module.exports = {
 		var i = 0
 
 		joblist.forEach(async function (arrayItem) {
+
 		    let partid = arrayItem.id
-		    sails.log(partid)
 		    const request = require('request-promise');
-			await request('http://localhost:1339/getpartbyid17/' + partid, function (error, response, body) {
-				data.push(JSON.parse(body)[0]);
-				sails.log(data)
-				i=i+1
+			await request('http://localhost:1338/getpartbyid17/' + partid, function (error, response, body) {
+
+			  data.push({
+          id: JSON.parse(body)[0].id,
+          partName: JSON.parse(body)[0].partName,
+          qty: arrayItem.qty
+			  });
+
+			  i=i+1
 
 				if (i == l){
 					res.view("\\pages\\orderparts",{parts:data})
 				}
-			});	
+			});
    		});
 	},
 
@@ -170,9 +189,9 @@ module.exports = {
    		let jobname = req.query.jobs
    		let joblist;
    		const request1 = require('request-promise');
-   		
-   		await request1('http://localhost:1338/requestDataPartsQty/'+ jobname, function(err,httpResponse,body){
-   			joblist = body 
+
+   		await request1('http://localhost:1337/requestDataPartsQty/'+ jobname, function(err,httpResponse,body){
+   			joblist = body
    		 })
 
 		joblist = JSON.parse(joblist);
@@ -186,7 +205,7 @@ module.exports = {
 		    let partid = arrayItem.id
 		    sails.log(partid)
 		    const request = require('request-promise');
-			await request('http://localhost:1339/getpartbyid17/' + partid, function (error, response, body) {
+			await request('http://localhost:1338/getpartbyid17/' + partid, function (error, response, body) {
 				data.push(JSON.parse(body)[0]);
 				sails.log(data)
 				i=i+1
@@ -194,7 +213,7 @@ module.exports = {
 				if (i == l){
 					res.json(data)
 				}
-			});	
+			});
    		});
 	},
 
