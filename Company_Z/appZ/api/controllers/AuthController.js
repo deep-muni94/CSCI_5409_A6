@@ -5,8 +5,6 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-var JobpartsController = require('./JobpartsController');
-
 module.exports = {
   
 	signup:async function(req, res) {
@@ -84,12 +82,13 @@ module.exports = {
 						sails.log(err)
 						res.json(err)
 					}
+					sails.log('vish')
 					res.send("inserted..!")
 
-					request.post({url:'http://localhost:1337/postOrder', form: {id:job.id,jobName:jobname,
-					 userId:userid, qty: job.qoh}}, function(err,httpResponse,body){
-						sails.log(body,"--postorder")  
-					})	
+					request.post('http://localhost:1337/postOrder').form({partid:[partid],jobname:req.body.jobname,
+					 userid:req.body.userid, qty: [qty]
+					 })
+
 				})
 			})
 		}
