@@ -1,5 +1,5 @@
 /**
- * Auth.js
+ * Search.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -7,24 +7,21 @@
 
 module.exports = {
 
-    attributes: {
-        
+  attributes: {
+
     id: { 
-        type: 'number',  
+        type: 'string',  
         required : true,
-        columnName: 'id'
+        columnName: 'jobName'
     },
-    name:{
-        type: "string"
+    date:{
+        type: 'ref', columnType: "datetime"
     },
-    emailid:{
-        type: "string"
+    time:{
+        type: 'ref', columnType: "datetime"
     },
-    password:{
-        type: "string"
-    } 
   },
     datastore: 'mysqldb',
-    tableName: "auth"
+    tableName: "search"
 };
 

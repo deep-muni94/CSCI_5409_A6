@@ -20,8 +20,19 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
+  '/selectjobs': { view: 'pages/selectjobs' },
+  '/orderparts': { view: 'pages/orderparts' },
+  '/login': { view: 'pages/login' },
+  
   "POST /signup":"AuthController.signup",
-  "POST /login":"AuthController.login",
+  "GET /login_api":"AuthController.login",
+  "GET /fetchjobs":"AuthController.fetchjobs",
+  "GET /fetchparts":"AuthController.fetchparts",
+  "GET /fetchparts_api":"AuthController.fetchparts_api",
+  
+  "POST /submitdata":"JobpartsController.submitdata"
+
+
 
 
 

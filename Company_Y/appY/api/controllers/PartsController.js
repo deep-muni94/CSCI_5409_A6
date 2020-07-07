@@ -20,12 +20,13 @@ module.exports = {
     },
     getPartById17: function (req, res) {
         Parts.find({id:req.params.id}).exec(function (err, parts17) {
-          if (err) {
-            res.send({data:err})
-        }if(parts17.length>0){
-            res.send(parts17);
-          }
-          else{
+            if (err) {
+                res.send({data:err})
+            }
+            if(parts17.length>0){
+                res.json(parts17);
+            }
+            else{
               res.send("No data associated with the partid")
           }
         });
