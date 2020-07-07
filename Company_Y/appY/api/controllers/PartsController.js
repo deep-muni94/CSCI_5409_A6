@@ -22,8 +22,11 @@ module.exports = {
         Parts.find({id:req.params.id}).exec(function (err, parts17) {
           if (err) {
             res.send({data:err})
-        }else{
+        }if(parts17.length>0){
             res.send(parts17);
+          }
+          else{
+              res.send("No data associated with the partid")
           }
         });
     },
@@ -40,7 +43,7 @@ module.exports = {
     displayAllParts17:function(req, res){
         Parts.find({}).exec(function(err,parts17){
             if(err){
-                res.send(500, {data: error});
+                res.send(500, {data: err});
             }
             else{
                 res.view('pages/parts', {parts17:parts17});
@@ -107,6 +110,6 @@ module.exports = {
                 res.redirect('/parts17');
             }
         });
-    }
+    },
 };
 

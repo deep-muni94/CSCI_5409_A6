@@ -31,7 +31,13 @@ module.exports.routes = {
   },
   'POST /addpart17': 'PartsController.addPart17',
   'POST /updatepart17/:partId/:partName': 'PartsController.updatePartPage17',
-  'POST /updatequantity17/:partId/:partName': 'PartsController.updateQuantity17'
+  'POST /updatequantity17/:partId/:partName': 'PartsController.updateQuantity17',
+  'POST /insertOrder17' : 'OrderController.insertOrder17',
+  'GET /searchOrderPage': { view: 'pages/searchOrderPage'},
+  // 'GET /searchOrder17': 'OrderController.searchJob17',
+  'POST /searchOrder': 'OrderController.searchOrder17',
+  'GET /displayorder':'OrderController.displayAllOrder17'
+
 
   /***************************************************************************
   *                                                                          *
