@@ -19,16 +19,17 @@ module.exports = {
         res.redirect('parts17');
     },
     getPartById17: function (req, res) {
+        sails.log(req.params.id,"--")
         Parts.find({id:req.params.id}).exec(function (err, parts17) {
             if (err) {
                 res.send({data:err})
             }
-            if(parts17.length>0){
-                res.json(parts17);
-            }
-            else{
-              res.send("No data associated with the partid")
-          }
+            // if(parts17.length>0){
+            res.json(parts17);
+            // }
+          //   else{
+          //     res.send("No data associated with the partid")
+          // }
         });
     },
     getQtyById17: function (req, res) {
