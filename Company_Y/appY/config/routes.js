@@ -19,14 +19,24 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  'GET /': 'PartsController.redirect17',
   'GET /getallparts17': 'PartsController.getAllParts17',
   'GET /getpartbyid17/:id': 'PartsController.getPartById17',
   'GET /getqtybyid17/:id': 'PartsController.getQtyById17',
   'GET /parts17': 'PartsController.displayAllParts17',
   'GET /findpart17': 'PartsController.displayPartByIdPage17',
   'POST /findpart17': 'PartsController.displayPartById17',
-  // 'GET /addpart17': '',
+  'GET /addpart17':  {
+    view: 'pages/addpart'
+  },
+  'POST /addpart17': 'PartsController.addPart17',
+  'POST /updatepart17/:partId/:partName': 'PartsController.updatePartPage17',
+  'POST /updatequantity17/:partId/:partName': 'PartsController.updateQuantity17',
+  'POST /insertOrder17' : 'OrderController.insertOrder17',
+  'GET /searchOrderPage': { view: 'pages/searchOrderPage'},
+  // 'GET /searchOrder17': 'OrderController.searchJob17',
+  'POST /searchOrder': 'OrderController.searchOrder17',
+  'GET /displayorder':'OrderController.displayAllOrder17'
 
 
   /***************************************************************************

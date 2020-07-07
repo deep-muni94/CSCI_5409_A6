@@ -54,6 +54,12 @@
           <li class="nav-item">
             <a class="nav-link" href="/addpart17">Add Part</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/searchOrderPage">Search order</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/displayorder">Orders</a>
+          </li>  
         </ul>
       </div>
     </nav>
@@ -131,5 +137,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.2/umd/popper.min.js" integrity="sha256-XahKYIZhnEztrOcCTmaEErjYDLoLqBoDJbVMYybyjH8=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+    //I found idea for this from https://stackoverflow.com/questions/24514717/bootstrap-navbar-active-state-not-working
+    $(document).ready(function() {
+      $.each($('.navbar').find('li'), function() {
+          $(this).toggleClass('active', 
+          window.location.pathname.indexOf($(this).find('a').attr('href')) > -1);
+      }); 
+    });
+  </script>
   </body>
 </html>
