@@ -113,6 +113,8 @@ module.exports = {
    			jobname = req.query.jobs
    		}
 
+   		sails.log(jobname,"--jobname")
+
    		let joblist;
    		const request1 = require('request-promise');
    		
@@ -138,6 +140,7 @@ module.exports = {
 				res.send("can not find parts inforamtion for job : " + searchjob)
 			}
    		 })
+   		sails.log(joblist,"joblist")
 
 		joblist = JSON.parse(joblist);
 
