@@ -84,13 +84,12 @@ module.exports = {
 						sails.log(err)
 						res.json(err)
 					}
-					sails.log('vish')
 					res.send("inserted..!")
 
-					request.post('http://localhost:1337/postOrder').form({partid:[partid],jobname:req.body.jobname,
-					 userid:req.body.userid, qty: [qty]
-					 })
-
+					request.post({url:'http://localhost:1337/postOrder', form: {id:job.id,jobName:jobname,
+					 userId:userid, qty: job.qoh}}, function(err,httpResponse,body){
+						sails.log(body,"--postorder")  
+					})	
 				})
 			})
 		}
@@ -111,7 +110,7 @@ module.exports = {
 
    		let jobname = req.query.searchjob
 
-   		if (!join(separator: string)bname){
+   		if (!jobname){
    			jobname = req.query.jobs
    		}
 
