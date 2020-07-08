@@ -17,23 +17,31 @@
 			<h4> OR </h4>
 			<input type="text" name="searchjob" placeholder="Search job"><br>
 			<br>
-			<input type="submit" value="Submit">
+			<input type="submit" value="Submit" class="btn btn-primary">
 		</form>
 	<script>
 
 		const fetchjobs = "http://localhost:1339/fetchjobs"
 
 		var data;
-
+		
+		
 		async function getjobs(){
 			const response = await fetch(fetchjobs);
 			data = await response.json()
 
 			console.log(data)
 
+			var arr=new Set();
+		for(var i=0;i<data.length;i++){
+			arr.add(data[i].jobName)
+		}
+
+		console.log(arr);
+
 			var select = document.getElementById("jobs");
-			data.forEach(async function (arrayItem) {
-			    let jobname = arrayItem.jobName
+			arr.forEach(async function (arrayItem) {
+			    let jobname = arrayItem
 
 			    var el = document.createElement("option");
 			    el.text = jobname;
@@ -52,6 +60,10 @@
 
 		}
 	</script>
+
+<form action="/" method="GET" class="m-5">
+	<center> <button class="btn btn-primary"> Home </button> </center>
+</form>
 
 </body>
 

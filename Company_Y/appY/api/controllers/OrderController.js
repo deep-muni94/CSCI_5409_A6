@@ -2,6 +2,7 @@
 
 module.exports = {
   insertOrder17: function (req, res) {
+    console.log("called")
     Orders.find({ id: req.body.id, jobName: req.body.jobName, userId: req.body.userId })
       .exec(function (err, order17) {
         if (err) {

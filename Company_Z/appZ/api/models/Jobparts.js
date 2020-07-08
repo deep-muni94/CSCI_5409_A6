@@ -15,7 +15,7 @@ module.exports = {
         columnName: 'userid'
     },
     partId:{
-        type: "string"
+        type: "number"
     },
     jobName:{
         type: "string"

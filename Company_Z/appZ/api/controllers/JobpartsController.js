@@ -71,5 +71,16 @@ module.exports = {
 			res.send("can not order more part for same job")
 		}
 	},
+
+	allOrders: function (req, res) {
+		Jobparts.find({}).exec(function (err, orders17) {
+		  if (err) {
+			res.send(500, { data: err });
+		  }
+		  else {
+			res.view('pages/allOrders', { orders17: orders17 });
+		  }
+		})
+	  }
 };
 

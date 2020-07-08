@@ -48,71 +48,106 @@ module.exports = {
 			jobs = JSON.parse(body);
 		})
 
-		jobs.forEach(async function(job) {
+		let partsAvail=true;
+		let counter=0;
+		jobs.forEach( function(job) {
 
 			const request = require('request-promise');
-			await request('http://localhost:1338/getqtybyid17/' + job.id,
-				function (error, response, body) {
-
-				if (parseInt(job.qoh) > parseInt(body)){
+		 	request('http://localhost:1338/getqtybyid17/' + job.id,
+				async function (error, response, body) {
+				
+				if (parseInt(job.qty) > parseInt(body)){
+					partsAvail=false;
 					res.send("parts not available")
+				}
+				counter++;
+				if(counter==jobs.length && partsAvail==true){
+				
+		
+						var s1 = await Jobparts.find().where({
+							and:
+							[
+								{id: userid },
+								{jobName: jobname}
+							]
+						});
+				
+				if(s1.length < 1){
+					jobs.forEach(async function(job) {
+						var today = new Date();
+						const DATE_FORMATER = require( 'dateformat' );
+						var time = DATE_FORMATER( today, "HH:MM:ss" );
+
+						Jobparts.create({id: userid, partId: job.id , jobName: jobname,
+							qty: job.qty, date:today , time: time, result:"sucess"}).exec(function(err){
+
+							if(err){
+								sails.log(err)
+								res.json(err)
+							}
+							sails.log('vish')
+
+				sails.log("before posting order to x and y");
+				let b={
+					id:job.id,
+					jobName:jobname,
+					userId:userid,
+					qty: job.qty
+				}
+
+				console.log("this is b"+b);
+
+				const request = require('request');
+
+
+				const options = {
+					url: 'http://localhost:1337/postOrder',
+					json: true,
+					body: {
+						id:job.id,
+						jobName:jobname,
+						userId:userid,
+						qty: job.qty
+						}
+				};
+
+				request.post(options, (err, res, body) => {
+					if (err) {
+						return console.log(err);
+					}
+					console.log(`Status: ${res.statusCode}`);
+					console.log(body);
+				});
+
+				const options1 = {
+					url: 'http://localhost:1338/insertOrder17',
+					json: true,
+					body: {
+						id:job.id,
+						jobName:jobname,
+						userId:userid,
+						qty: job.qty
+						}
+				};
+
+				request.post(options1, (err, res, body) => {
+					if (err) {
+						return console.log(err);
+					}
+					console.log(`Status: ${res.statusCode}`);
+					console.log(body);
+				});
+						res.send("inserted..!")
+						})
+					})
+				}
+				else{
+					res.send("can not order more part for same job")
+				}
 				}
 			})
 		});
 
-
-		var s1 = await Jobparts.find().where({
-   				and:
-   				[
-   					{id: userid },
-   					{jobName: jobname}
-   				]
-   			});
-
-		if(s1.length < 1){
-			jobs.forEach(async function(job) {
-				var today = new Date();
-				const DATE_FORMATER = require( 'dateformat' );
-				var time = DATE_FORMATER( today, "HH:MM:ss" );
-
-				Jobparts.create({id: userid, partId: job.id , jobName: jobname,
-					qty: job.qoh, date:today , time: time, result:"sucess"}).exec(function(err){
-
-					if(err){
-						sails.log(err)
-						res.json(err)
-					}
-					sails.log('vish')
-
-          request('http://localhost:1338/partExist17/' + req.body.id, { json: true }, (err, response, body) => {
-
-          });
-
-          request.post('http://localhost:1337/postOrder',
-            {
-              id:partid,
-              jobName:req.body.jobname,
-              userId:req.body.userid,
-              qty: qty
-            }
-          )
-
-          request.post('http://localhost:1338/insertOrder17',
-            {
-              id:partid,
-              jobName:req.body.jobname,
-              userId:req.body.userid,
-              qty: qty
-            }
-          )
-
-					res.send("inserted..!")
-				})
-			})
-		}
-		else{
-			res.send("can not order more part for same job")
-		}
    	},
 
    	fetchjobs:async function(req, res) {
@@ -178,7 +213,9 @@ module.exports = {
 			  i=i+1
 
 				if (i == l){
-					res.view("\\pages\\orderparts",{parts:data})
+					res.view("pages/orderparts",{parts:data})
+
+					//res.view("\\pages\\orderparts",{parts:data})
 				}
 			});
    		});
@@ -206,7 +243,12 @@ module.exports = {
 		    sails.log(partid)
 		    const request = require('request-promise');
 			await request('http://localhost:1338/getpartbyid17/' + partid, function (error, response, body) {
-				data.push(JSON.parse(body)[0]);
+
+				data.push({
+          id: JSON.parse(body)[0].id,
+          partName: JSON.parse(body)[0].partName,
+          qty: arrayItem.qty
+			  });
 				sails.log(data)
 				i=i+1
 
