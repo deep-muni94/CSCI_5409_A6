@@ -48,7 +48,7 @@ module.exports = {
 
           if (parseInt(job.qty) > parseInt(body)) {
             partsAvail = false;
-            res.send("parts not available")
+            res.view("pages/purchaseStatus", {result: {msg: "parts not available"}});
           }
           counter++;
           if (counter === jobs.length && partsAvail === true) {
@@ -126,11 +126,11 @@ module.exports = {
                     console.log(`Status: ${res.statusCode}`);
                     console.log(body);
                   });
-                  res.send("inserted..!")
+                  res.view("pages/purchaseStatus", {result: {msg: "inserted..!"}});
                 })
               })
             } else {
-              res.send("can not order more part for same job")
+              res.view("pages/purchaseStatus", {result: {msg: "can not order more part for same job"}});
             }
           }
         })

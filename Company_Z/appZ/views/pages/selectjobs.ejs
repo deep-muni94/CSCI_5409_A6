@@ -58,7 +58,7 @@
 <br>
 			<br>
 			<h4> OR </h4>
-			<input type="text" name="searchjob" placeholder="Search job">
+			<input type="text" name="searchjob" id="jobName" placeholder="Search job">
 			<br>
 			<br>
 			<br>
@@ -103,7 +103,16 @@
 
 		function myFunction(){
 			var x = document.getElementById("jobs");
-			localStorage.setItem("jobnamekey", x.value)
+			localStorage.setItem("jobnamekey", x.value);
+
+			const jobName = document.getElementById("jobName").value;
+
+			if(arr.has(jobName)){
+				return true;
+			}else{
+				alert("Job " + jobName + " does not exist");
+				return false;
+			}
 
 		}
 	</script>
