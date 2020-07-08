@@ -23,7 +23,7 @@ module.exports = {
   },
 
   create17: function (req, res) {
-    request('http://localhost:1338/partExist17/' + req.body.id, { json: true }, (err, response, body) => {
+    request('http://ec2-3-89-197-168.compute-1.amazonaws.com:1337/partExist17/' + req.body.id, { json: true }, (err, response, body) => {
       if(err){
         return console.log(err);
       }

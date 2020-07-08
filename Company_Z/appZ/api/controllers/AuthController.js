@@ -33,7 +33,7 @@ module.exports = {
 
     let jobs;
     const request2 = require('request-promise');
-    await request2('http://localhost:1339/fetchparts_api?jobs=' + jobname,
+    await request2('http://129.173.67.217:1337/fetchparts_api?jobs=' + jobname,
       function (error, response, body) {
         jobs = JSON.parse(body);
       })
@@ -43,7 +43,7 @@ module.exports = {
     jobs.forEach(function (job) {
 
       const request = require('request-promise');
-      request('http://localhost:1338/getqtybyid17/' + job.id,
+      request('http://ec2-3-89-197-168.compute-1.amazonaws.com:1337/getqtybyid17/' + job.id,
         async function (error, response, body) {
 
           if (parseInt(job.qty) > parseInt(body)) {
@@ -90,7 +90,7 @@ module.exports = {
 
 
                   const options = {
-                    url: 'http://localhost:1337/postOrder',
+                    url: 'http://ec2-54-82-117-54.compute-1.amazonaws.com:1337/postOrder',
                     json: true,
                     body: {
                       id: job.id,
@@ -109,7 +109,7 @@ module.exports = {
                   });
 
                   const options1 = {
-                    url: 'http://localhost:1338/insertOrder17',
+                    url: 'http://ec2-3-89-197-168.compute-1.amazonaws.com:1337/insertOrder17',
                     json: true,
                     body: {
                       id: job.id,
@@ -141,7 +141,7 @@ module.exports = {
   fetchjobs: async function (req, res) {
 
     const request = require('request');
-    request('http://localhost:1337/requestAllJobs', function (error, response, body) {
+    request('http://ec2-54-82-117-54.compute-1.amazonaws.com:1337/requestAllJobs', function (error, response, body) {
       res.send(body);
     });
   },
@@ -157,7 +157,7 @@ module.exports = {
     let joblist;
     const request1 = require('request-promise');
 
-    await request1('http://localhost:1337/requestDataPartsQty/' + jobname, function (err, httpResponse, body) {
+    await request1('http://ec2-54-82-117-54.compute-1.amazonaws.com:1337/requestDataPartsQty/' + jobname, function (err, httpResponse, body) {
 
       if (JSON.parse(body).length > 0) {
         joblist = body
@@ -188,7 +188,7 @@ module.exports = {
 
       let partid = arrayItem.id
       const request = require('request-promise');
-      await request('http://localhost:1338/getpartbyid17/' + partid, function (error, response, body) {
+      await request('http://ec2-3-89-197-168.compute-1.amazonaws.com:1337/getpartbyid17/' + partid, function (error, response, body) {
 
         data.push({
           id: JSON.parse(body)[0].id,
@@ -211,7 +211,7 @@ module.exports = {
     let joblist;
     const request1 = require('request-promise');
 
-    await request1('http://localhost:1337/requestDataPartsQty/' + jobname, function (err, httpResponse, body) {
+    await request1('http://ec2-54-82-117-54.compute-1.amazonaws.com:1337/requestDataPartsQty/' + jobname, function (err, httpResponse, body) {
       joblist = body
     })
 
@@ -225,7 +225,7 @@ module.exports = {
     joblist.forEach(async function (arrayItem) {
       let partid = arrayItem.id
       const request = require('request-promise');
-      await request('http://localhost:1338/getpartbyid17/' + partid, function (error, response, body) {
+      await request('http://ec2-3-89-197-168.compute-1.amazonaws.com:1337/getpartbyid17/' + partid, function (error, response, body) {
 
         data.push({
           id: JSON.parse(body)[0].id,
