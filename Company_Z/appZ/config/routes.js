@@ -29,6 +29,8 @@ module.exports.routes = {
   "GET /fetchjobs":"AuthController.fetchjobs",
   "GET /fetchparts":"AuthController.fetchparts",
   "GET /fetchparts_api":"AuthController.fetchparts_api",
+  "GET /allOrders" : "JobPartsController.allOrders",
+  "GET /showSearch" : "SearchController.showSearch",
   
   "POST /submitdata":"JobpartsController.submitdata"
 

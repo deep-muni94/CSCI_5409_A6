@@ -8,20 +8,20 @@
 module.exports = {
 
     attributes: {
-        
-    id: { 
-        type: 'number',  
+
+    id: {
+        type: 'number',
         required : true,
         columnName: 'userid'
     },
     partId:{
-        type: "string"
+        type: "number"
     },
     jobName:{
         type: "string"
     },
     qty:{
-        type: "string"
+        type: "number"
     },
     date:{
         type: 'ref', columnType: "datetime"
@@ -31,7 +31,7 @@ module.exports = {
     },
     result:{
         type: "string"
-    } 
+    }
   },
     datastore: 'mysqldb',
     tableName: "jobparts"
