@@ -1,16 +1,9 @@
-/**
- * Auth.js
- *
- * @description :: A model definition represents a database table/collection.
- * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
- */
-
 module.exports = {
 
     attributes: {
-        
-    id: { 
-        type: 'number',  
+
+    id: {
+        type: 'number',
         required : true,
         columnName: 'id'
     },
@@ -22,7 +15,7 @@ module.exports = {
     },
     password:{
         type: "string"
-    } 
+    }
   },
     datastore: 'mysqldb',
     tableName: "auth"

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Sails App</title>
+    <title>Panel: Company Y</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -59,7 +59,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/displayorder">Orders</a>
-          </li>  
+          </li>
         </ul>
       </div>
     </nav>
@@ -141,9 +141,9 @@
     //I found idea for this from https://stackoverflow.com/questions/24514717/bootstrap-navbar-active-state-not-working
     $(document).ready(function() {
       $.each($('.navbar').find('li'), function() {
-          $(this).toggleClass('active', 
+          $(this).toggleClass('active',
           window.location.pathname.indexOf($(this).find('a').attr('href')) > -1);
-      }); 
+      });
     });
   </script>
   </body>

@@ -1,10 +1,3 @@
-/**
- * PartsController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
-
 module.exports = {
   getAllParts17: function (req, res) {
     Parts.find().exec(function (err, parts17) {
@@ -24,12 +17,7 @@ module.exports = {
       if (err) {
         res.send({data: err})
       }
-      // if(parts17.length>0){
       res.json(parts17);
-      // }
-      //   else{
-      //     res.send("No data associated with the partid")
-      // }
     });
   },
   getQtyById17: function (req, res) {
@@ -113,10 +101,10 @@ module.exports = {
     Parts.find({id: req.params.id}).exec(function (err, parts17) {
       if (err) {
         console.log(err);
-      }else{
-        if(parts17.length > 0){
+      } else {
+        if (parts17.length > 0) {
           res.send({status: true});
-        }else{
+        } else {
           res.send({status: false});
         }
       }

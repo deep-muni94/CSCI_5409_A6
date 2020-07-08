@@ -7,7 +7,6 @@ module.exports = {
       if (err) {
         console.log(err);
       }else{
-      //   res.view('pages/allJobs', {result: jobs17});
        res.view('pages/allJobs', {result: jobs17});
       }
     });
@@ -18,8 +17,7 @@ module.exports = {
       if(err){
         console.log(err);
       }else{
-        // res.view("pages/oneJob", {result: jobs17});
-       res.view("\\pages\\oneJob", {result: jobs17});
+        res.view("pages/oneJob", {result: jobs17});
       }
     });
   },
@@ -38,20 +36,16 @@ module.exports = {
               id: req.body.id,
               qty: req.body.qty
             }).exec(function (err, result) {
-              // res.view("pages/addJob", {result: {msg: "Job Added", btnMsg: "Add another Job"}});
-              res.view("\\pages\\addJob", {result: {msg: "Job Added", btnMsg: "Add another Job"}});
+              res.view("pages/addJob", {result: {msg: "Job Added", btnMsg: "Add another Job"}});
             });
           }else{
-            // res.view("pages/addJob", {result: {msg: "Job already exist", btnMsg: "Try Again"}});
-            res.view("\\pages\\addJob", {result: {msg: "Job already exist", btnMsg: "Try Again"}});
+            res.view("pages/addJob", {result: {msg: "Job already exist", btnMsg: "Try Again"}});
           }
         });
       }else if(!response.body.status){
-        res.view("\\pages\\addJob", {result: {msg: "Part does not exist", btnMsg: "Try Again"}});
-        //  res.view("pages/addJob", {result: {msg: "Part does not exist", btnMsg: "Try Again"}});
+        res.view("pages/addJob", {result: {msg: "Part does not exist", btnMsg: "Try Again"}});
       }else{
-        res.view("\\pages\\addJob", {result: {msg: "Server Error", btnMsg: "Try Again"}});
-        //  res.view("pages/addJob", {result: {msg: "Part does not exist", btnMsg: "Try Again"}});
+        res.view("pages/addJob", {result: {msg: "Part does not exist", btnMsg: "Try Again"}});
       }
     });
   },
@@ -65,12 +59,10 @@ module.exports = {
         }).set({
           qty: req.body.qty
         }).exec(function (err, result) {
-          // res.view("pages/update", {result: {msg: "Job Modified", btnMsg: "Modify another Job"}});
-         res.view("\\pages\\update", {result: {msg: "Job Modified", btnMsg: "Modify another Job"}});
+          res.view("pages/update", {result: {msg: "Job Modified", btnMsg: "Modify another Job"}});
         });
       }else{
-        // res.view("pages/update", {result: {msg: "Job does not exist", btnMsg: "Try Again"}});
-       res.view("\\pages\\update", {result: {msg: "Job does not exist", btnMsg: "Try Again"}});
+        res.view("pages/update", {result: {msg: "Job does not exist", btnMsg: "Try Again"}});
       }
     });
   },
@@ -80,8 +72,7 @@ module.exports = {
       if (err) {
         console.log(err);
       }else{
-        // res.view('pages/deleteJobs', {result: jobs17});
-       res.view('\\pages\\deleteJobs', {result: jobs17});
+        res.view('pages/deleteJobs', {result: jobs17});
       }
     });
   },
