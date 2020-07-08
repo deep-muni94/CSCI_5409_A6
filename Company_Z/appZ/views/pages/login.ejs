@@ -4,6 +4,19 @@
 form {
   border: 3px solid #f1f1f1;
 }
+.home{
+				position: absolute;
+    margin-top: -40px;
+			 }
+.header{
+  height: 80px;
+    padding: 10px;
+                background-color: #34675c;
+                 
+                 color: white;
+				 text-align: center;
+                 font-weight: 500;
+}
 
 /* Full-width inputs */
 input[type=text], input[type=password] {
@@ -72,6 +85,10 @@ span.psw {
     width: 100%;
   }
 }
+
+form{
+  border:none;
+}
 </style>
 </head>
 
@@ -85,8 +102,14 @@ span.psw {
     }
   </script>
 
-
+<div class="header">
+  <div class="home">
+    <form action="/" method="GET" class="m-5">
+      <center> <button style="color:white;font-weight: 500;border-radius: 10px;line-height: 1px;width: 200px ;height: 35px;border:1px solid white;background:#7da3a1;" class="btn"> Home </button> </center>
+    </form>
+    </div>
   <h1><center> Login here <center> </h1>
+    </div>
 <form action="/login_api" method="GET" onsubmit="return validateForm();">
 
   <div class="container">
@@ -96,7 +119,14 @@ span.psw {
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="psw" required>
     <input name="hidTest" id="hidTest" type="hidden" value="testIt">
-    <button type="submit">Login</button>
+    <br>
+    <br>
+    <button style=" border: 1px solid black;
+    font-weight: 500;
+    background: #7da3a1;
+    color: white;font-size: 21px;
+    height: 45px;
+    line-height: 1px;border-radius: 10px;" id="login" type="submit">Login</button>
 
   </div>
 
