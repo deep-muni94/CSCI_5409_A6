@@ -173,7 +173,7 @@ module.exports = {
           }
         })
       } else {
-        res.send("can not find parts inforamtion for job : " + searchjob)
+        res.send("can not find parts inforamtion for job : " + jobname)
       }
     })
 
