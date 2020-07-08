@@ -72,6 +72,7 @@
 
 		var data;
 
+		var arr=new Set();
 
 		async function getjobs(){
 			const response = await fetch(fetchjobs);
@@ -79,7 +80,7 @@
 
 			console.log(data)
 
-			var arr=new Set();
+
 		for(var i=0;i<data.length;i++){
 			arr.add(data[i].jobName)
 		}
@@ -106,6 +107,8 @@
 			localStorage.setItem("jobnamekey", x.value);
 
 			const jobName = document.getElementById("jobName").value;
+
+			console.log()
 
 			if(arr.has(jobName)){
 				return true;
