@@ -36,10 +36,10 @@ CREATE TABLE `jobs` (
 );
 
 LOCK TABLES `jobs` WRITE;
-INSERT INTO `jobs` (`jobName`, `partId`, `qty`) VALUES ('j017',17,1000),('j117',117,20),('j217',217,50),('j217',317,50),('j317',317,50);
+INSERT INTO `jobs` (`jobName`, `partId`, `qty`) VALUES ('job017',17,1000),('job117',117,20),('job217',217,50),('job217',317,50),('job317',317,50);
 UNLOCK TABLES;
 
-CREATE TABLE `partordersx` (
+CREATE TABLE `PartOrdersX` (
   `partId` int(11) NOT NULL,
   `jobName` varchar(20) NOT NULL,
   `userId` varchar(20) NOT NULL,
@@ -47,10 +47,10 @@ CREATE TABLE `partordersx` (
   PRIMARY KEY (`partId`,`jobName`,`userId`)
 );
 
-LOCK TABLES `partordersx` WRITE;
+LOCK TABLES `PartOrdersX` WRITE;
 UNLOCK TABLES;
 
-CREATE TABLE `partordersy` (
+CREATE TABLE `PartOrdersY` (
   `partId` int(11) NOT NULL,
   `jobName` varchar(20) NOT NULL,
   `userId` varchar(20) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE `partordersy` (
   PRIMARY KEY (`partId`,`jobName`,`userId`)
 ); 
 
-LOCK TABLES `partordersy` WRITE;
+LOCK TABLES `PartOrdersY` WRITE;
 UNLOCK TABLES;
 
 CREATE TABLE `parts` (
@@ -69,7 +69,7 @@ CREATE TABLE `parts` (
 );
 
 LOCK TABLES `parts` WRITE;
-INSERT INTO `parts` (`partId`, `partName`, `qoh`) VALUES (17,'p017',200),(117,'p117',100),(118,'hk',8),(217,'p217',150),(317,'317',50);
+INSERT INTO `parts` (`partId`, `partName`, `qoh`) VALUES (17,'part017',200),(117,'part117',100),(217,'part217',150),(317,'part317',50);
 UNLOCK TABLES;
 
 CREATE TABLE `search` (
@@ -83,8 +83,8 @@ UNLOCK TABLES;
 
 SELECT * FROM jobs;
 SELECT * FROM parts;
-SELECT * FROM partordersx;
-SELECT * FROM partordersy;
+SELECT * FROM PartOrdersX;
+SELECT * FROM PartOrdersY;
 SELECT * FROM auth;
 SELECT * FROM search;
 SELECT * FROM jobparts;
